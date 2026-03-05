@@ -1,8 +1,12 @@
 -- Purpose: Raw layer table (loaded from ADF).
+-- Raw = source-of-truth ingestion
+
+-- Create schema if it doesn’t exist
 IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'raw')
     EXEC('CREATE SCHEMA raw');
 GO
 
+-- Create the raw table only if it doesn’t exist
 IF OBJECT_ID('raw.simulated_hospital_admissions', 'U') IS NULL
 BEGIN
     CREATE TABLE raw.simulated_hospital_admissions (
@@ -23,3 +27,7 @@ BEGIN
     );
 END;
 GO
+
+-- Quick check: table exists
+SELECT TOP 1 * 
+FROM raw.simulated_hospital_admissions;
