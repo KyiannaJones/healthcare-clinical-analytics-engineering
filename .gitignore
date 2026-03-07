@@ -1,0 +1,32 @@
+# Secrets
+*.env
+*.key
+*.pem
+*.token
+secrets/*
+credentials/*
+config.local.*
+
+# Azure / Cloud
+*.sas
+*.connectionstring
+
+# Data files
+*.csv
+*.parquet
+*.xlsx
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Python environments (if added later)
+venv/
+__pycache__/
+
+# Logs
+*.log
