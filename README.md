@@ -12,6 +12,20 @@ Architecture
 Blob Storage (Landing)
 - Azure Data Factory (Ingestion Pipeline)
 - Azure SQL Database
+  
+This project demonstrates an end-to-end healthcare clinical analytics engineering pipeline built using Azure cloud services and a layered data warehouse architecture.
+The pipeline begins with a CSV dataset that is stored in Azure Blob Storage as the landing zone. Azure Data Factory orchestrates the ingestion process and loads the data into an Azure SQL Database.
+
+Inside the database, the data warehouse is structured using three logical layers:
+- **Raw Layer** – Stores the source-of-truth ingestion table exactly as it arrives from the pipeline.
+- **Staging Layer** – Performs data cleaning and transformations, including generating a deterministic `Admission_ID` when a natural encounter key is not available.
+- **Marts Layer** – Implements a dimensional **star schema** designed for analytics and reporting.
+
+The marts layer separates data into **Dimension tables** and a **Fact_Admissions** table to support efficient analytical queries and business intelligence reporting.
+
+This structure mirrors how modern analytics engineering teams organize data pipelines to separate ingestion, transformation, and analytics-ready modeling.
+
+![Architecture Diagram](images/architecture_diagram.png)
 
 Structured into layered schemas:
 - raw – source-of-truth ingestion table
