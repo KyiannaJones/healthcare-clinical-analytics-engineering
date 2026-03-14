@@ -21,6 +21,9 @@ Inside the database, the data warehouse is structured using three logical layers
 - **Staging Layer** – Performs data cleaning and transformations, including generating a deterministic `Admission_ID` when a natural encounter key is not available.
 - **Marts Layer** – Implements a dimensional **star schema** designed for analytics and reporting.
 
+The final analytics-ready star schema is then consumed by Power BI to produce the Clinical Operations Dashboard for hospital leadership.
+- **BI / Consumption Layer**
+  
 The marts layer separates data into **Dimension tables** and a **Fact_Admissions** table to support efficient analytical queries and business intelligence reporting.
 
 This structure mirrors how modern analytics engineering teams organize data pipelines to separate ingestion, transformation, and analytics-ready modeling.
@@ -66,3 +69,23 @@ Why This Project Matters
 This project reflects the transition from traditional analytics to analytics engineering. Instead of focusing only on reporting outputs, the emphasis was placed on data modeling, structured transformations, reproducibility, and clean architecture.
 
 This approach ensures downstream analytics tools (Power BI, etc.) connect to a reliable, well-designed warehouse layer rather than raw transactional data.
+
+## BI Layer – Clinical Operations Dashboard
+The final consumption layer of the analytics pipeline is a Power BI dashboard designed for hospital leadership to monitor operational performance.
+
+The dashboard provides visibility into:
+- Total Patient Admissions  
+- Average Length of Stay (LOS)  
+- Patient Severity Distribution  
+- Department-level Admission Trends  
+- Clinical Conditions Driving Hospital Utilization  
+- Hospital Payer Mix  
+
+These metrics allow stakeholders to quickly identify utilization patterns and patient complexity across departments.
+
+### Dashboard Preview
+![Clinical Operations Dashboard](images/hospital_clinical_operations_dashboard_overview.png)
+
+### Dashboard File
+The Power BI dashboard file is located here:
+powerbi/hospital_clinical_operations_dashboard.pbix
